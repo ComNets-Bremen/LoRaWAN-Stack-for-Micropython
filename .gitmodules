@@ -1,0 +1,3 @@
+[submodule "source/extern"]
+	path = source/extern
+	url = https://github.com/KianBahasadri/micropython-aes-cmac.git
