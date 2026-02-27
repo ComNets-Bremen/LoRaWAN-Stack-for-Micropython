@@ -85,7 +85,7 @@ class Transceiver:
         self.settings()
 
         
-    def settings(self, power=17, sf=7, bw=125, cr=4/5, syn_word=0x12, inv_iq=False, crc=False, exp_header=True):
+    def settings(self, power=17, sf=7, bw=125, cr=4/5, syn_word=0x12, inv_iq=False, crc=True, exp_header=True):
         """
         Parameters
         ----------
@@ -161,19 +161,32 @@ class Transceiver:
             self.exp_header = 0x01
         self.write(_REG_MODEM_CONFIG1, bw_reg | cr_reg | self.exp_header)
 
+	# TODO: Check. Autoconfig?
+        # Ensure Low Data Rate Optimization OFF for SF7 BW125
+        self.write(_REG_MODEM_CONFIG3, 0x04)
+
               
         #sync word
         self.write(_REG_SYNC_WORD, syn_word) #LoRaWAN sync word is 0x34
         
-        #invert IQ
-        #For some reason RX or TX has to be inverted in order for the message to be received properly
+#         #invert IQ
+#         #For some reason RX or TX has to be inverted in order for the message to be received properly
+#         if inv_iq:
+#             self.write(_REG_INVERT_IQ, 0x66)#invert RX
+#             self.write(_REG_INVERT_IQ2, 0x19)
+#         else:
+#             self.write(_REG_INVERT_IQ, 0x27)#invert TX
+#             self.write(_REG_INVERT_IQ2, 0x1D)
+#         
+        # invert IQ (standard LoRa compatibility)
         if inv_iq:
-            self.write(_REG_INVERT_IQ, 0x66)#invert RX
+            # invert both TX and RX
+            self.write(_REG_INVERT_IQ, 0x66)
             self.write(_REG_INVERT_IQ2, 0x19)
         else:
-            self.write(_REG_INVERT_IQ, 0x27)#invert TX
+            # normal IQ (no inversion)
+            self.write(_REG_INVERT_IQ, 0x27)
             self.write(_REG_INVERT_IQ2, 0x1D)
-        
         
     def set_freq(self, freq):
         """
@@ -388,3 +401,5 @@ if __name__ == "__main__":
     while True:
         print(sx1276.receive(868.1, timeout=5))
         utime.sleep_ms(10)
+
+
