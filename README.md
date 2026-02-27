@@ -28,7 +28,14 @@ connected device:
 
     uv run mpremote repl
 
-You can exit the repl by pressing <ctrl>+x
+You can exit the repl by pressing `<ctrl>+x`
+
+You can select the port, for example, by using
+
+    uv run mpremote connect /dev/ttyACM0 repl
+
+For further details can be found online: [mpremote online
+docs](https://docs.micropython.org/en/latest/reference/mpremote.html)
 
 ## Upload Driver
 There is an upload script in `src/upload.sh`. This has been tested on Linux and
