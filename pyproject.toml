@@ -1,0 +1,9 @@
+[project]
+name = "lorawan-stack-for-micropython"
+version = "0.1.0"
+description = "This is a LoRa and LoRaWAN stack for Micropython"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mpremote>=1.27.0",
+]
