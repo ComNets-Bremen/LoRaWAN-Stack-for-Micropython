@@ -212,12 +212,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "esptool" },
     { name = "mpremote" },
+    { name = "rshell" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "esptool", specifier = ">=5.2.0" },
     { name = "mpremote", specifier = ">=1.27.0" },
+    { name = "rshell", specifier = ">=0.0.36" },
 ]
 
 [[package]]
@@ -282,12 +284,27 @@ wheels = [
 ]
 
 [[package]]
+name = "pyreadline"
+version = "2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bc/7c/d724ef1ec3ab2125f38a1d53285745445ec4a8f19b9bb0761b4064316679/pyreadline-2.1.zip", hash = "sha256:4530592fc2e85b25b1a9f79664433da09237c1a270e4d78ea5aa3a2c7229e2d1", size = 109189, upload-time = "2015-09-16T08:24:48.745Z" }
+
+[[package]]
 name = "pyserial"
 version = "3.5"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082/pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb", size = 159125, upload-time = "2020-11-23T03:59:15.045Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/07/bc/587a445451b253b285629263eb51c2d8e9bcea4fc97826266d186f96f558/pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0", size = 90585, upload-time = "2020-11-23T03:59:13.41Z" },
+]
+
+[[package]]
+name = "pyudev"
+version = "0.24.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5e/1d/8bdbf651de1002e8b58fbe817bee22b1e8bfcdd24341d42c3238ce9a75f4/pyudev-0.24.4.tar.gz", hash = "sha256:e788bb983700b1a84efc2e88862b0a51af2a995d5b86bc9997546505cf7b36bc", size = 56135, upload-time = "2025-10-08T17:26:58.661Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2a/51/3dc0cd6498b24dea3cdeaed648568e3ca7454d41334d840b114156d7479f/pyudev-0.24.4-py3-none-any.whl", hash = "sha256:b3b6b01c68e6fc628428cc45ff3fe6c277afbb5d96507f14473ddb4a6b959e00", size = 62784, upload-time = "2025-10-08T17:26:57.664Z" },
 ]
 
 [[package]]
@@ -361,3 +378,14 @@ sdist = { url = "https://files.pythonhosted.org/packages/04/27/091e140ea83427218
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ca/e5/d708d262b600a352abe01c2ae360d8ff75b0af819b78e9af293191d928e6/rich_click-1.9.7-py3-none-any.whl", hash = "sha256:2f99120fca78f536e07b114d3b60333bc4bb2a0969053b1250869bcdc1b5351b", size = 71491, upload-time = "2026-01-31T04:29:26.777Z" },
 ]
+
+[[package]]
+name = "rshell"
+version = "0.0.36"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyreadline", marker = "sys_platform == 'win32'" },
+    { name = "pyserial" },
+    { name = "pyudev" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c7/ce/d802cd6363e709f36652c27c47d1ec411bc11eeb25bb472c711855e56038/rshell-0.0.36.tar.gz", hash = "sha256:4a66d835207479550e59d0dd3e83003d04c4eca78a4e49250f887ed2dd4b0bf5", size = 48786, upload-time = "2024-12-04T06:43:02.993Z" }

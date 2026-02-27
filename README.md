@@ -41,6 +41,10 @@ docs](https://docs.micropython.org/en/latest/reference/mpremote.html)
 There is an upload script in `src/upload.sh`. This has been tested on Linux and
 should also work on MacOS. It requires `uv` to be installed (see above).
 
+For a more sophisticated workflow, you might consider skipping our `upload.sh`
+and use [rshell](https://github.com/dhylands/rshell). It is already included in
+this repository.
+
 ## Example Code
 The example code is available in `src`. Please make sure you uncomment the
 section for the hardware you would like to use. Also, comment the not required
