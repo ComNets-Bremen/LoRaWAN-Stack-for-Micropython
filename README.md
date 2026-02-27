@@ -31,8 +31,12 @@ connected device:
 You can exit the repl by pressing <ctrl>+x
 
 ## Upload Driver
-TBD
+There is an upload script in `src/upload.sh`. This has been tested on Linux and
+should also work on MacOS. It requires `uv` to be installed (see above).
 
 ## Example Code
-TBD
+The example code is available in `src`. Please make sure you uncomment the
+section for the hardware you would like to use. Also, comment the not required
+hardware. Upload everything with the upload script.
+
 
