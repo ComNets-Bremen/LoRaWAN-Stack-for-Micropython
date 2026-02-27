@@ -8,6 +8,13 @@ For CMAC [this library](https://github.com/KianBahasadri/micropython-aes-cmac) i
 
 # How to use this code?
 
+We assume that you already have MicroPython installed on your devices. For the
+MoleNet ESP32-S3, you can follow [this manual](https://micropython.org/download/ESP32_GENERIC_S3/).
+
+Using uv, you can execute the tool using
+
+    uv run esptool ...
+
 ## Python Environment
 
 The Python environment (**NOT** the micropython environment) is managed using
