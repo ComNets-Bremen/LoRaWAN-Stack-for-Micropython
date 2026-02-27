@@ -23,6 +23,16 @@ else
     exit 1
 fi
 
+
+port=""
+
+if [ -z "$1" ]; then
+    echo "Using the autodetection of the port"
+else
+    echo "Using Port $1"
+    port="connect $1"
+fi
+
 #echo "Performing a soft-reset"
 #uv run mpremote connect $1 soft-reset
 
@@ -30,22 +40,22 @@ fi
 #uv run mpremote connect $1 fs ls
 
 echo "Removing lib, main.py and boot.py to ensure we have a clean system"
-uv run mpremote connect $1 fs rm -rf lib libs
-uv run mpremote connect $1 fs rm -rf main.py
-uv run mpremote connect $1 fs rm -rf boot.py
+uv run mpremote $port fs rm -rf lib libs
+uv run mpremote $port fs rm -rf main.py
+uv run mpremote $port fs rm -rf boot.py
 
 echo "Now, we upload the current version of this code..."
 
-uv run mpremote connect $1 cp main.py :main.py
+uv run mpremote $port cp main.py :main.py
 
-uv run mpremote connect $1 fs mkdir lib
+uv run mpremote $port fs mkdir lib
 for f in $(ls lib/*.py); do
     l=$(basename $f)
-    uv run mpremote connect $1 cp $f :lib/$l
+    uv run mpremote $port cp $f :lib/$l
 done
 
 echo "Showing prompt. Do not forget to restart the device using <CTRL>+d"
 
-uv run mpremote connect $1 repl
+uv run mpremote $port repl
 
 
