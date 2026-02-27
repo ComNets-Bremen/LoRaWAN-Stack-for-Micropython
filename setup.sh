@@ -9,7 +9,7 @@ if command -v git >/dev/null 2>&1; then
 else
     echo "Error: Git is not installed." >&2
     echo "Please install git and make sure you pull this repository directly using git!"
-    exit
+    exit 1
 fi
 
 echo "Checking out external libs..."
