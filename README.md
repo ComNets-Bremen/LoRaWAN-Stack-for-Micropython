@@ -37,13 +37,20 @@ You can select the port, for example, by using
 For further details can be found online: [mpremote online
 docs](https://docs.micropython.org/en/latest/reference/mpremote.html)
 
+## Submodules
+
+The driver requires some submodules for the encryption. The script `setup.sh`
+downloads the submodules and copies the files to the corresponding locations.
+
+This is a \*nix-based script. You can also perform the required steps manually.
+
 ## Upload Driver
 There is an upload script in `src/upload.sh`. This has been tested on Linux and
 should also work on MacOS. It requires `uv` to be installed (see above).
 
 For a more sophisticated workflow, you might consider skipping our `upload.sh`
 and use [rshell](https://github.com/dhylands/rshell). It is already included in
-this repository.
+the requirements of this repository.
 
 ## Example Code
 The example code is available in `src`. Please make sure you uncomment the
