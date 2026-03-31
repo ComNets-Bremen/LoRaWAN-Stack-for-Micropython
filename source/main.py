@@ -55,15 +55,16 @@ import ubinascii
 #dio1 = Pin(PIN_DIO1, Pin.IN)
 #transceiver = Transceiver(spi, cs, rst, busy, dio1, DIO_TXCO)
 
-
-### Setup for MoleNet 6.3
-from SX1276 import Transceiver
+## Setup for MoleNet 7.1
+from SX1262 import Transceiver
 PIN_SCK=14
 PIN_MOSI=47
 PIN_MISO=21
 PIN_CS=48
-PIN_RST=45
-PIN_DIO=46
+PIN_RST=15
+PIN_BUSY=39
+PIN_DIO1=46
+DIO_TXCO=False
 spi = machine.SoftSPI(
         baudrate=400000,
         sck=PIN_SCK,
@@ -73,9 +74,31 @@ spi = machine.SoftSPI(
 
 cs = Pin(PIN_CS, Pin.OUT, value=1)
 rst = Pin(PIN_RST, Pin.OUT, value=1)
-rst = Pin(PIN_RST, Pin.IN)
-dio = Pin(PIN_DIO, Pin.IN)
-transceiver = Transceiver(spi, cs, rst, dio)
+busy = Pin(PIN_BUSY, Pin.IN)
+dio1 = Pin(PIN_DIO1, Pin.IN)
+transceiver = Transceiver(spi, cs, rst, busy, dio1, DIO_TXCO)
+
+
+### Setup for MoleNet 6.3
+#from SX1276 import Transceiver
+#PIN_SCK=14
+#PIN_MOSI=47
+#PIN_MISO=21
+#PIN_CS=48
+#PIN_RST=45
+#PIN_DIO=46
+#spi = machine.SoftSPI(
+#        baudrate=400000,
+#        sck=PIN_SCK,
+#        mosi=PIN_MOSI,
+#        miso=PIN_MISO
+#        )
+#
+#cs = Pin(PIN_CS, Pin.OUT, value=1)
+#rst = Pin(PIN_RST, Pin.OUT, value=1)
+#rst = Pin(PIN_RST, Pin.IN)
+#dio = Pin(PIN_DIO, Pin.IN)
+#transceiver = Transceiver(spi, cs, rst, dio)
 
 
 ###
@@ -119,5 +142,4 @@ while True:
     print(f"RSSI   : {rssi}")
     print(f"Meta: {transceiver.get_meta()}")
     time.sleep(5)
-
 
